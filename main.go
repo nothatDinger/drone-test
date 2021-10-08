@@ -11,7 +11,7 @@ func main() {
 	r.GET("/ping", func(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{
 			"Header":  ctx.Request.Header,
-			"message": "pong",
+			"message": "pong test",
 		})
 	})
 	r.Run(":5000")
