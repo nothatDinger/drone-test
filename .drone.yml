@@ -13,5 +13,5 @@ steps:
 trigger:
   branch:
     - test
-    - rebuild
-    - master
+  event:
+    - push
