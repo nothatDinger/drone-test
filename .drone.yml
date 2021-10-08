@@ -10,7 +10,7 @@ steps:
     commands:
       - echo $DRONE_COMMIT_BRANCH
       - git config --global url."https://hub.fastgit.org".insteadOf https://github.com
-      - git fetch origin $DRONE_COMMIT_BRANCH
+      - git fetch origin +refs/heads/master:
   - name: build
     image: golang:1.17
     commands:
