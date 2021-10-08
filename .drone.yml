@@ -2,7 +2,14 @@ kind: pipeline
 type: docker
 name: drone-test
 
+clone:
+  disable: true
 steps:
+  - name: clone
+    image: alpine/git
+    commands:
+      - git config --global url."https://hub.fastgit.org".insteadOf https://github.com
+      - git fetch origin +refs/heads/$DRONE_COMMIT_BRANCH
   - name: build
     image: golang:1.17
     commands:
