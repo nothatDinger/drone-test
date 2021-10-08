@@ -12,6 +12,6 @@ steps:
 
 trigger:
   branch:
-    - test
+    - master
   event:
     - push
