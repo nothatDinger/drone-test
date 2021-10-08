@@ -10,17 +10,31 @@ steps:
     commands:
       - git config --global url."https://hub.fastgit.org".insteadOf https://github.com
       - git clone -b $DRONE_COMMIT_BRANCH $DRONE_GIT_HTTP_URL .
-  - name: build
+
+  - name: build_dev
     image: golang:1.17
+    depends_on:
+      - clone
     commands:
       - go env -w GO111MODULE=on
       - go env -w GOPROXY="https://goproxy.cn,direct"
       - go build -o main main.go
+    when:
+      branch:
+       - dev
+  - name: Hello World
+    image: centos
+    depends_on:
+      - clone
+    commands:
+      - echo Hello World
+    when:
+      event:
+       - tag
 
 trigger:
   branch:
-    - master
+    - dev
   event:
     - push
-    - pull_request
     - tag
