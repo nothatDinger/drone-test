@@ -8,9 +8,10 @@ steps:
   - name: clone
     image: drone/git
     commands:
+      - git init
       - echo $DRONE_COMMIT_BRANCH
       - git config --global url."https://hub.fastgit.org".insteadOf https://github.com
-      - git fetch origin +refs/heads/master:
+      - git fetch origin $DRONE_COMMIT_BRANCH
   - name: build
     image: golang:1.17
     commands:
