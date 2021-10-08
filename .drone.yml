@@ -6,7 +6,7 @@ clone:
   disable: true
 steps:
   - name: clone
-    image: alpine/git
+    image: drone/git
     commands:
       - echo $DRONE_COMMIT_BRANCH
       - git config --global url."https://hub.fastgit.org".insteadOf https://github.com
