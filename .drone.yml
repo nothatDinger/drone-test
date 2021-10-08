@@ -21,7 +21,9 @@ steps:
       - go build -o main main.go
     when:
       branch:
-       - dev
+        - dev
+      event:
+        - push
   - name: Hello World
     image: centos
     depends_on:
@@ -30,11 +32,9 @@ steps:
       - echo Hello World
     when:
       event:
-       - tag
+        - tag
 
 trigger:
-  branch:
-    - dev
   event:
     - push
     - tag
